@@ -64,8 +64,10 @@ def get_costco_product():
 
     except requests.RequestException as e:
         print(f"An error occurred while making the request: {e}")
+        send_email("costco checker failed", response)
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+        send_email("costco checker failed", response)
 
 if __name__ == "__main__":
     get_costco_product()

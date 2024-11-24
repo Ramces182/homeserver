@@ -66,7 +66,6 @@ def get_costco_product():
         print(f"An error occurred while making the request: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-    print ("done")
 
 if __name__ == "__main__":
     get_costco_product()

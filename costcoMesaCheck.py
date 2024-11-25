@@ -69,7 +69,7 @@ if __name__ == "__main__":
     nombreMesaChica = "Gabite, Lomas Diamante, Mesa de Comedor"
     urlMesaChica = "https://www.costco.com.mx/rest/v2/mexico/products/5948700/?fields=FULL&lang=es_MX&curr=MXN"
     precioMesaChica = 11999.0
-    nombreAppleWatchUltra = "Gabite, Lomas Diamante, Mesa de Comedor"
+    nombreAppleWatchUltra = "Apple Watch Ultra 2 (GPS + Cellular) Caja de titanio negro 49mm con Correa Ocean Negro"
     urlAppleWatchUltra= "https://www.costco.com.mx/rest/v2/mexico/products/688626/?fields=FULL&lang=es_MX&curr=MXN"
     precioAppleWatchUltra = 16999.0
     get_costco_product(urlAppleWatchUltra, precioAppleWatchUltra, nombreAppleWatchUltra)

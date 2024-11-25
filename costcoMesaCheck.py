@@ -4,7 +4,7 @@ import ssl
 import smtplib
 import requests
 
-def send_email(subject: str, body: str, email_receiver: str = "estif78@live.com.mx"):
+def send_email(subject: str, body: str, email_receiver: str):
     """Send an email with the given subject and body.
 
     Args:
@@ -31,7 +31,9 @@ def send_email(subject: str, body: str, email_receiver: str = "estif78@live.com.
         smtp.login(email_sender, email_password)
         smtp.sendmail(email_sender, email_receiver, em.as_string())
 
-def get_costco_product(url, priceThreshold, productName):
+def get_costco_product(productID, priceThreshold, productName):
+
+    url = f"https://www.costco.com.mx/rest/v2/mexico/products/{productID}/?fields=FULL&lang=es_MX&curr=MXN"
     
     try:
         # Perform the GET request
@@ -53,24 +55,28 @@ def get_costco_product(url, priceThreshold, productName):
             body = f"{productName} está a: {formatted_price}. ¡Checa el precio ahora!"
             
             # Call the send_email function
-            send_email(subject, body)
+            send_email(subject, body, "estif78@live.com.mx")
+            send_email(subject, body, "danioldnavy1@gmail.com")
+        else:
+            print(f"{productName}: {formatted_price}")
 
     except requests.RequestException as e:
         print(f"An error occurred while making the request: {e}")
-        send_email("Costco Checker Failed", f"Error: {e}")
+        send_email("Costco Checker Failed", f"Error: {e}", "estif78@live.com.mx")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-        send_email("Costco Checker Failed", f"Error: {e}")
+        send_email("Costco Checker Failed", f"Error: {e}", "estif78@live.com.mx")
 
 if __name__ == "__main__":
     nombreMesaGrande = "Gabite, Monza, Mesa de Comedor"
-    urlMesaGrande = "https://www.costco.com.mx/rest/v2/mexico/products/5948704/?fields=FULL&lang=es_MX&curr=MXN"
+    idMesaGrande = "5948704"
     precioMesaGrande = 11999.0
     nombreMesaChica = "Gabite, Lomas Diamante, Mesa de Comedor"
-    urlMesaChica = "https://www.costco.com.mx/rest/v2/mexico/products/5948700/?fields=FULL&lang=es_MX&curr=MXN"
+    idMesaChica = "5948700"
     precioMesaChica = 11999.0
     nombreAppleWatchUltra = "Apple Watch Ultra 2 (GPS + Cellular) Caja de titanio negro 49mm con Correa Ocean Negro"
-    urlAppleWatchUltra= "https://www.costco.com.mx/rest/v2/mexico/products/688626/?fields=FULL&lang=es_MX&curr=MXN"
-    precioAppleWatchUltra = 16999.0
-    get_costco_product(urlAppleWatchUltra, precioAppleWatchUltra, nombreAppleWatchUltra)
-    get_costco_product(urlMesaChica, precioMesaChica, nombreMesaChica)
+    idAppleWatchUltra= "688626"
+    precioAppleWatchUltra = 15999.0
+    get_costco_product(idAppleWatchUltra, precioAppleWatchUltra, nombreAppleWatchUltra)
+    get_costco_product(idMesaChica, precioMesaChica, nombreMesaChica)
+    get_costco_product(idMesaGrande, precioMesaGrande, nombreMesaGrande)

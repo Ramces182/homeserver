@@ -3,6 +3,7 @@ from email.message import EmailMessage
 import ssl
 import smtplib
 import requests
+import datetime
 
 def send_email(subject: str, body: str, email_receiver: str):
     """Send an email with the given subject and body.
@@ -58,6 +59,8 @@ def get_costco_product(productID, priceThreshold, productName):
             send_email(subject, body, "estif78@live.com.mx")
             send_email(subject, body, "danioldnavy1@gmail.com")
         else:
+            current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            print(f"////////////////////{current_time}///////////////////////")
             print(f"{productName}: {formatted_price}")
 
     except requests.RequestException as e:

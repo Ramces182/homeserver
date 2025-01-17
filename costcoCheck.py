@@ -56,8 +56,8 @@ def get_costco_product(productID, priceThreshold, productName):
             body = f"{productName} está a: {formatted_price}. ¡Checa el precio ahora!"
             
             # Call the send_email function
-            send_email(subject, body, "estif78@live.com.mx")
-            send_email(subject, body, "danioldnavy1@gmail.com")
+            send_email(subject, body, "email@email.com")
+            send_email(subject, body, "email2@mail.com")
         else:
             current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             print(f"////////////////////{current_time}///////////////////////")

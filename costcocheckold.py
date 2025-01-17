@@ -4,7 +4,7 @@ import ssl
 import smtplib
 import requests
 
-def send_email(subject: str, body: str, email_receiver: str = "estif78@live.com.mx"):
+def send_email(subject: str, body: str, email_receiver: str = "mail@mail.com"):
     """Send an email with the given subject and body.
 
     Args:
